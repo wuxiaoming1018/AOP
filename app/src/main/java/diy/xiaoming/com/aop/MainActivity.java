@@ -8,6 +8,7 @@ import android.view.View;
 
 import java.util.Random;
 
+import diy.xiaoming.com.aop.annotation.BeforeBehavior;
 import diy.xiaoming.com.aop.annotation.BehaviorTrace;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,15 +28,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @BehaviorTrace("语音消息")
+    @BeforeBehavior("语音消息")
     public void mAudio(View view){
         SystemClock.sleep(new Random().nextInt(2000));
     }
 
+    @BeforeBehavior("视频消息")
     public void mVideo(View view){
-
+        SystemClock.sleep(new Random().nextInt(2000));
     }
 
     public void saySomething(View view){
-
+        SystemClock.sleep(new Random().nextInt(2000));
     }
 }
