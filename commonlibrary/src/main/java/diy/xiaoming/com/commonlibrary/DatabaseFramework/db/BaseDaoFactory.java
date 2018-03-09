@@ -1,6 +1,9 @@
 package diy.xiaoming.com.commonlibrary.DatabaseFramework.db;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
+
+import java.io.File;
 
 /**
  * Created by Administrator on 2018-03-09.
@@ -17,7 +20,11 @@ public class BaseDaoFactory {
     private SQLiteDatabase sqLiteDatabase;
 
     private BaseDaoFactory(){
-        sql ="data/data/diy.xiaoming.com.aop/jett.db";
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            //SDCard存在
+            File file = Environment.getExternalStorageDirectory();
+        }
+        sql ="data/data/diy.xiaoming.com.aop/jettsd.db";
         sqLiteDatabase = SQLiteDatabase.openOrCreateDatabase(sql,null);
     }
 

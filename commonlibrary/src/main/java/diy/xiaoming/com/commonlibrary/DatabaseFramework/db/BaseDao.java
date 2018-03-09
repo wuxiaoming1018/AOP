@@ -31,7 +31,7 @@ public class BaseDao<T> implements IBaseDao<T> {
         Map<String,String> map = getValues(entity);
         ContentValues values = getContentValues(map);
         long result = sqLiteDatabase.insert(tableName,null,values);
-        return 0;
+        return result;
     }
 
     private ContentValues getContentValues(Map<String, String> map) {
@@ -49,7 +49,7 @@ public class BaseDao<T> implements IBaseDao<T> {
     }
 
     private Map<String, String> getValues(T entity) {
-        Map<String,String> map = new HashMap<>();
+        HashMap<String,String> map = new HashMap<>();
         Iterator<Field> iterator = cacheMap.values().iterator();
         while (iterator.hasNext()) {
             Field field = iterator.next();
@@ -63,7 +63,7 @@ public class BaseDao<T> implements IBaseDao<T> {
                 String value = object.toString();
                 //获取列名
                 String key = null;
-                if (field.getAnnotation(DBField.class).value()!=null) {
+                if (field.getAnnotation(DBField.class)!=null) {
                     key = field.getAnnotation(DBField.class).value();
                 }else{
                     key = field.getName();
@@ -133,7 +133,7 @@ public class BaseDao<T> implements IBaseDao<T> {
 
     private String getCreateTableSql() {
         StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append("create table if not exists");
+        stringBuffer.append("create table if not exists ");
         stringBuffer.append(tableName + "(");
         Field[] fields = entityClass.getDeclaredFields();
         for (Field field : fields) {

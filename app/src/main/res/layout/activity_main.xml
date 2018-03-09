@@ -33,5 +33,11 @@
         android:layout_marginTop="10dp"
         android:text="说说功能"
         android:onClick="saySomething"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="插入数据"
+        android:onClick="insert"/>
 
 </LinearLayout>
