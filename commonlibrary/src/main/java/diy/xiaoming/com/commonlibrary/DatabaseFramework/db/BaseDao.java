@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,6 +33,31 @@ public class BaseDao<T> implements IBaseDao<T> {
         ContentValues values = getContentValues(map);
         long result = sqLiteDatabase.insert(tableName,null,values);
         return result;
+    }
+
+    @Override
+    public long update(T entity, T where) {
+        return 0;
+    }
+
+    @Override
+    public int delete(T where) {
+        return 0;
+    }
+
+    @Override
+    public List<T> query(T where) {
+        return null;
+    }
+
+    @Override
+    public List<T> query(T where, String orderBy, Integer startIndex, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public List<T> query(String sql) {
+        return null;
     }
 
     private ContentValues getContentValues(Map<String, String> map) {
